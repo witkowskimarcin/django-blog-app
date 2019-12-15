@@ -1,0 +1,8 @@
+<div class="col s4">
+    <div class="collection">
+        <p class="collection-item"><strong>Top10 tags<strong></p>
+        {% for t in tags %}
+            <a href="/tag/{{t.tag_name}}" class="collection-item">{{t}}</a>
+        {% endfor %}
+    </div>
+</div>

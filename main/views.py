@@ -19,6 +19,33 @@ def homepage(request):
                       "posts":Post.objects.all,
                       "tags":Tag.objects.all})
 
+# def show_post(request, post_title):
+#     post = Post.objects.get(post_title=post_title)
+#     return HttpResponse(f"{post.post_title}")
+
+# def list_posts_by_tag(request, tag_name):
+#     tag = Tag.objects.get(tag_name=tag_name)
+#     return HttpResponse(f"{tag.tag_name}")
+
+def show_post(request, post_title):
+    post = Post.objects.get(post_title=post_title)
+    return render(request = request,
+                  template_name='main/post.html',
+                  context = {
+                      "post":post,
+                      "tags":Tag.objects.all})
+
+# DO ZROBIENIA !!!
+def list_posts_by_tag(request, tag_name):
+    tag = Tag.objects.get(tag_name=tag_name)
+    # posts = Post.objects.filter(post__post_tag=tag)
+    return render(request = request,
+                  template_name='main/posts_by_tag.html',
+                  context = {
+                    #   "posts":tag.posts,
+                      "tag":tag,
+                      "tags":Tag.objects.all})
+
 def register(request):
     if request.method == "POST":
         form = NewUserForm(request.POST)
