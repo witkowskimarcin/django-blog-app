@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Post
+from .models import Post, Tag
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import logout, authenticate, login
 from django.contrib import messages
@@ -15,7 +15,9 @@ from django.shortcuts import render, redirect
 def homepage(request):
     return render(request = request,
                   template_name='main/home.html',
-                  context = {"posts":Post.objects.all})
+                  context = {
+                      "posts":Post.objects.all,
+                      "tags":Tag.objects.all})
 
 def register(request):
     if request.method == "POST":
