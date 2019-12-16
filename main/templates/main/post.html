@@ -7,13 +7,21 @@
 
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title"><a href="{{post.post_title}}">{{post.post_title}}</a></span>
+                        <span class="card-title"><a href="/post/{{post.post_title}}">{{post.post_title}}</a></span>
                         <span style="font-size:70%">{{post.post_published}}</span>
                         <br>
                         <br>
                         <p>{{post.post_content|safe}}</p>
                     </div>
                 </div>
+
+                {% for t in post_tags %}
+                
+                <a href="/tag/{{t.tag_name}}">{{t}}</a>
+
+                {% endfor %}
+
+
 
     </div>
 

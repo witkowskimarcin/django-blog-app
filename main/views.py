@@ -29,20 +29,21 @@ def homepage(request):
 
 def show_post(request, post_title):
     post = Post.objects.get(post_title=post_title)
+    post_tags = post.tag_set.all()
     return render(request = request,
                   template_name='main/post.html',
                   context = {
                       "post":post,
+                      "post_tags":post_tags,
                       "tags":Tag.objects.all})
 
-# DO ZROBIENIA !!!
 def list_posts_by_tag(request, tag_name):
     tag = Tag.objects.get(tag_name=tag_name)
-    # posts = Post.objects.filter(post__post_tag=tag)
+
     return render(request = request,
                   template_name='main/posts_by_tag.html',
                   context = {
-                    #   "posts":tag.posts,
+                      "posts":list(tag.posts.all()),
                       "tag":tag,
                       "tags":Tag.objects.all})
 

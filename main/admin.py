@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Tag, PostTag
+from .models import Post, Tag #, PostTag
 from tinymce.widgets import TinyMCE
 from django.db import models
 
@@ -20,4 +20,4 @@ class PostAdmin(admin.ModelAdmin):
 admin.site.register(Post,PostAdmin)
 
 admin.site.register(Tag)
-admin.site.register(PostTag)
+# admin.site.register(PostTag)

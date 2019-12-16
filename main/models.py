@@ -25,18 +25,20 @@ class Post(models.Model):
 
 class Tag(models.Model):
     tag_name = models.CharField(max_length=20)
-    posts = models.ManyToManyField(
-        Post,
-        through='PostTag',
-        through_fields=('tag', 'post'),
-    )
+    # posts = models.ManyToManyField(
+    #     Post,
+    #     through='PostTag',
+    #     through_fields=('tag', 'post'),
+    # )
+
+    posts = models.ManyToManyField(Post)
 
     def __str__(self):
         return '#'+self.tag_name
 
-class PostTag(models.Model):
-    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+# class PostTag(models.Model):
+#     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+#     post = models.ForeignKey(Post, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.tag.tag_name+':'+self.post.post_title
+#     def __str__(self):
+#         return self.tag.tag_name+':'+self.post.post_title
